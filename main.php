@@ -1,3 +1,7 @@
+<?php
+require_once 'config.php';
+// Если пользователь авторизован, можно показать приветствие, но это необязательно
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Канцтовары. Главная</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -18,12 +23,23 @@
         <a class="nav-link active" aria-current="page" href="#">Каталог</a>
         <a class="nav-link" href="#">О нас</a>
         <a class="nav-link" href="applications.php">Заявки</a>
-        <a class="nav-link active" aria-current="page" href="order.php">Новая заявка</a>
+        <a class="nav-link" href="order.php">Новая заявка</a>
+        <?php if (isset($_SESSION['user_id']) || isset($_SESSION['admin'])): ?>
+            <a class="nav-link" href="logout.php">Выйти</a>
+        <?php else: ?>
+            <a class="nav-link" href="auth.php">Войти</a>
+        <?php endif; ?>
       </div>
     </div>
   </div>
 </nav>
+
 <div class="container">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <p class="text-end mt-2">Здравствуйте, <?= htmlspecialchars($_SESSION['login']) ?>!</p>
+    <?php elseif (isset($_SESSION['admin'])): ?>
+        <p class="text-end mt-2">Вы вошли как администратор</p>
+    <?php endif; ?>
     <h1 class="text-center">Наши товары:</h1>
     <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center"> 
     <div class="col">
@@ -99,5 +115,4 @@
 </footer>
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

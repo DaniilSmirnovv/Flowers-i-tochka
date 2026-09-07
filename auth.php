@@ -1,3 +1,34 @@
+<?php
+require_once 'config.php';
+
+$error = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $login = trim($_POST['login'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if (!empty($login) && !empty($password)) {
+        $stmt = $pdo->prepare("SELECT id, password FROM users WHERE login = ?");
+        $stmt->execute([$login]);
+        $user = $stmt->fetch();
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['login'] = $login;
+            // Проверяем, админ ли это (по логину Admin и паролю KanctowEst)
+            if ($login === 'Admin' && $password === 'KanctowEst') {
+                $_SESSION['admin'] = true;
+                header('Location: admin.php');
+            } else {
+                header('Location: main.php');
+            }
+            exit;
+        } else {
+            $error = 'Неверный логин или пароль.';
+        }
+    } else {
+        $error = 'Заполните все поля.';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,6 +36,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Авторизация</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="container d-flex align-items-center justify-content-center vh-100">
@@ -13,32 +45,17 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="text-center mb-4 h3">Авторизация</h1>
-                        <form action="main.php" method="GET">
+                        <?php if ($error): ?>
+                            <div class="alert alert-danger"><?= $error ?></div>
+                        <?php endif; ?>
+                        <form action="" method="POST">
                             <div class="mb-3">
                                 <label for="login" class="form-label">Логин <span class="text-danger">*</span></label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="login"
-                                    name="login"
-                                    placeholder="Латинские буквы и цифры, не менее 6 символов"
-                                    required
-                                    pattern="[A-Za-z0-9]{6,}"
-                                />
-                                <div class="invalid-feedback">Логин должен содержать только латиницу и цифры, минимум 6 символов.</div>
+                                <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Пароль <span class="text-danger">*</span></label>
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    id="password"
-                                    name="password"
-                                    placeholder="Минимум 8 символов"
-                                    required
-                                    minlength="8"
-                                />
-                                <div class="invalid-feedback">Пароль должен содержать минимум 8 символов.</div>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 mt-2">Войти</button>
                         </form>
