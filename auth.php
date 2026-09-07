@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="text-center mb-4 h3">Авторизация</h1>
-                        <form action="main.html" method="GET">
+                        <form action="main.php" method="GET">
                             <div class="mb-3">
                                 <label for="login" class="form-label">Логин <span class="text-danger">*</span></label>
                                 <input
@@ -43,7 +43,7 @@
                             <button type="submit" class="btn btn-primary w-100 mt-2">Войти</button>
                         </form>
                         <div class="text-center mt-3">
-                            <small class="text-muted">Еще не зарегистрированы? <a href="index.html" class="text-decoration-none">Регистрация</a></small>
+                            <small class="text-muted">Еще не зарегистрированы? <a href="index.php" class="text-decoration-none">Регистрация</a></small>
                         </div>
                     </div>
                 </div>

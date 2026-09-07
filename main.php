@@ -17,7 +17,8 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="#">Каталог</a>
         <a class="nav-link" href="#">О нас</a>
-        <a class="nav-link" href="applications.html">Заявки</a>
+        <a class="nav-link" href="applications.php">Заявки</a>
+        <a class="nav-link active" aria-current="page" href="order.php">Новая заявка</a>
       </div>
     </div>
   </div>

@@ -10,15 +10,16 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="main.html">Канцтовары.Есть</a>
+    <a class="navbar-brand" href="main.php">Канцтовары.Есть</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="main.html">Каталог</a>
+        <a class="nav-link" href="main.php">Каталог</a>
         <a class="nav-link" href="#">О нас</a>
         <a class="nav-link active" aria-current="page" href="#">Заявки</a>
+        <a class="nav-link active" aria-current="page" href="order.php">Новая заявка</a>
       </div>
     </div>
   </div>
@@ -110,7 +111,7 @@
     </div>
 
     <div class="text-center mt-4">
-        <a href="main.html" class="btn btn-outline-secondary">На главную</a>
+        <a href="main.php" class="btn btn-outline-secondary">На главную</a>
     </div>
 </div>
 

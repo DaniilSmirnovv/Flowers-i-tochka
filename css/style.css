@@ -24,3 +24,13 @@
 .review-block form {
   margin-top: 1rem;
 }
+#success-message {
+    display: none;
+}
+#success-message:target {
+    display: block;
+}
+
+.card {
+    border-radius: .5rem;
+}
