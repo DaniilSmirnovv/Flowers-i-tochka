@@ -2,8 +2,8 @@
 // config.php
 $host = 'localhost';
 $dbname = 'kanctovary';
-$username = 'root';   // ваш пользователь
-$password = '';       // ваш пароль (обычно пустой)
+$username = 'root';  
+$password = '';    
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
