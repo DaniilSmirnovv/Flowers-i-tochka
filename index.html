@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="row justify-content-center w-100">
+            <div class="col-md-6 col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4 h3">Регистрация</h1>
+                        <form action="?" method="GET">
+                            <div class="mb-3">
+                                <label for="login" class="form-label">Логин <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="login" name="login"
+                                       placeholder="Только латиница и цифры, ≥6 символов"
+                                       required pattern="[A-Za-z0-9]{6,}" />
+                                <div class="invalid-feedback">Логин должен содержать только латиницу и цифры, минимум 6 символов.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">ФИО <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="fullName" name="fullName"
+                                       placeholder="Иванов Иван Иванович"
+                                       required pattern="[А-Яа-яЁё\s]+" />
+                                <div class="invalid-feedback">ФИО должно содержать только кириллицу и пробелы.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Электронная почта <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="example@mail.ru" required />
+                                <div class="invalid-feedback">Введите корректный адрес электронной почты.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Телефон <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                       placeholder="8(123)456-78-90"
+                                       required pattern="8\(\d{3}\)\d{3}-\d{2}-\d{2}" />
+                                <div class="invalid-feedback">Формат: 8(XXX)XXX-XX-XX (например, 8(123)456-78-90)</div>
+                                <small class="text-muted">Формат: 8(XXX)XXX-XX-XX</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Пароль <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Минимум 8 символов" required minlength="8" />
+                                <div class="invalid-feedback">Пароль должен содержать минимум 8 символов.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-2">Создать пользователя</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">Уже есть аккаунт? <a href="auth.html" class="text-decoration-none">Войти</a></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

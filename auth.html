@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="row justify-content-center w-100">
+            <div class="col-md-6 col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4 h3">Авторизация</h1>
+                        <form action="main.html" method="GET">
+                            <div class="mb-3">
+                                <label for="login" class="form-label">Логин <span class="text-danger">*</span></label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="login"
+                                    name="login"
+                                    placeholder="Латинские буквы и цифры, не менее 6 символов"
+                                    required
+                                    pattern="[A-Za-z0-9]{6,}"
+                                />
+                                <div class="invalid-feedback">Логин должен содержать только латиницу и цифры, минимум 6 символов.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Пароль <span class="text-danger">*</span></label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Минимум 8 символов"
+                                    required
+                                    minlength="8"
+                                />
+                                <div class="invalid-feedback">Пароль должен содержать минимум 8 символов.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-2">Войти</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">Еще не зарегистрированы? <a href="index.html" class="text-decoration-none">Регистрация</a></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

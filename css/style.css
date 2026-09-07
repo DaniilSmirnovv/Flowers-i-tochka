@@ -1,0 +1,26 @@
+.card-register {
+  max-width: 480px;
+  width: 100%;
+}
+.review-block {
+  margin-top: 2rem;
+  border-top: 2px solid #dee2e6;
+  padding-top: 1.5rem;
+}
+.review-block details {
+  margin-bottom: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+.review-block summary {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.25rem 0;
+}
+.review-block summary:focus {
+  outline: none;
+}
+.review-block form {
+  margin-top: 1rem;
+}
