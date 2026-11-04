@@ -1,16 +1,41 @@
 <?php
-// config.php
-$host = 'localhost';
-$dbname = 'kanctovary';
-$username = 'root';  
-$password = '';    
+// ==========================================
+// НАСТРОЙКИ ПОДКЛЮЧЕНИЯ К БАЗЕ ДАННЫХ
+// ==========================================
+// ВАЖНО: Перед загрузкой на GitHub эти данные заменены на вымышленные.
+// При развертывании на реальном хостинге или локальном сервере 
+// впишите сюда ваши актуальные данные для подключения.
 
+$host = 'localhost';          // Адрес сервера БД (обычно localhost или 127.0.0.1)
+$dbname = 'flowers_db';       // Имя базы данных (замените на реальное, например 'flowers')
+$username = 'db_user';        // Имя пользователя БД (замените на реальное, например 'root')
+$password = 'your_password';  // Пароль от БД (замените на реальный)
+
+// ==========================================
+// ПОДКЛЮЧЕНИЕ К БД ЧЕРЕЗ PDO
+// ==========================================
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    // Создаем экземпляр PDO для подключения к MySQL с кодировкой utf8mb4 (поддержка эмодзи)
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    
+    // Настраиваем PDO: выбрасывать исключения (Exceptions) при ошибках SQL
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Настраиваем PDO: по умолчанию возвращать ассоциативные массивы при выборке
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    
+    // Отключаем эмуляцию подготовленных выражений для настоящей защиты от SQL-инъекций
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    
 } catch (PDOException $e) {
+    // Если подключение не удалось, прерываем выполнение скрипта и выводим сообщение
     die("Ошибка подключения к БД: " . $e->getMessage());
 }
 
-session_start();
+// ==========================================
+// УПРАВЛЕНИЕ СЕССИЯМИ
+// ==========================================
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
